@@ -1,0 +1,29 @@
+
+{% extends 'lab1/base.html' %}
+
+{% block content %}
+<section>
+	<section>
+ 	<form method="POST" class="form-group">{% csrf_token %}
+		<div class="input-group">
+			{{form}}
+			<button type="submit" class ="btn">
+		</div>
+	</form>
+	</section>
+ <section>
+    <table class="table">
+	<thead>
+	<tr><th>URL</th></tr>
+	</thead>
+	<tbody>
+	 {% for url in urls %}
+           <tr><td><a href="{% url 'url_detail' pk=url.pk %}">{{url.title}}</a></td>
+		<td>{{url.finalDestination}}</td>
+		<td><a href="delete/{{url.pk}}"><i class="glyphicon glyphicon-remove"></i></a></td></tr>
+    {% endfor %}
+	</tbody>
+    </table>
+</section>
+</section>
+{% endblock %}

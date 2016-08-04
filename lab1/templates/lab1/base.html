@@ -1,0 +1,24 @@
+{% load staticfiles %}
+
+<html>
+    <head>
+        <title>Rachel Paresa Lab One</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="{% static 'css/lab1.css' %}">
+    </head>
+
+    <body>
+        <div class="page-header container">
+            <h1><a href="/">Lab One - Rachel Paresa</a></h1>
+        </div>
+        <div class="content container">
+             <div class="row">
+                {% block content %}
+                {% endblock %}
+             </div>
+        </div>
+    </body>
+</html>
+

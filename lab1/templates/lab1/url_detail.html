@@ -1,0 +1,16 @@
+{% extends 'lab1/base.html' %}
+
+{% block content %}
+<section>
+  <a class="btn btn-default" href="{% url 'url_list' %}"><span class="glyphicon glyphicon-home"></span></a>
+  
+    <div class="url">
+	<h1>{{url.title}}</h1>
+	<p>{{url.originalURL}}</p>
+	<p>{{url.finalDestination}}</p>
+	<p>{{url.statusCode}}</p>
+    </div>
+
+   <a class="btn btn-warning" href="../../delete/{{url.pk}}>Delete URL</a>
+</section>
+{% endblock %}
