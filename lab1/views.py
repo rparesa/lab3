@@ -12,13 +12,23 @@ def url_list(request):
         form = URLForm(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
-            response = requests.get(post)
-            temp = BeautifulSoup(response.content,"lxml")
-            post.title = temp.title.string
-            post.finalDestination = response.url
-            post.statusCode = response.status_code
-            post.save()
-            return redirect('url_detail', pk=post.pk)
+            try: 
+                response = requests.get(post)
+                temp = BeautifulSoup(response.content,"lxml")
+                if temp.title is not None:
+                    title = temp.title.string
+                else:
+                    title = "No Title"
+                    post.finalDestination = response.url
+                    post.statusCode = response.status_code
+            except Exception as e:
+                post.statusCode = "None"
+                post.finalDestination = "Does not exit"
+                post.title = "No title"
+                pass
+            finally:           
+                post.save()
+                return redirect('url_detail', pk=post.pk)
     else:
         form = URLForm
     return render(request, 'lab1/url_list.html',{'urls':urls,'form':URLForm})
