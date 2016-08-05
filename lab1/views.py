@@ -15,13 +15,10 @@ def url_list(request):
             try: 
                 response = requests.get(post)
                 temp = BeautifulSoup(response.content,"lxml")
-                if temp.title is not None:
-                    title = temp.title.string
-                else:
-                    title = "No Title"
-                    post.finalDestination = response.url
-                    post.statusCode = response.status_code
-            except Exception as e:
+                post.title = temp.title.string
+                post.finalDestination = response.url
+                post.statusCode = response.status_code
+            except:
                 post.statusCode = "None"
                 post.finalDestination = "Does not exit"
                 post.title = "No title"
