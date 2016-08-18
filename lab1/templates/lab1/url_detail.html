@@ -9,10 +9,12 @@
 	<p>{{url.originalURL}}</p>
 	<p>{{url.finalDestination}}</p>
 	<p>{{url.statusCode}}</p>
-  <p>{{url.uri}}</p>
   <p>{{url.datetime}}</p>
+  <p>{{url.wayback}}</p>
+  <p>{{url.wayback_date}}</p>
+  <p><a href="{{url.archive}}">{{url.archive}}</a></p>
+<a href="{{url.archive}}"><img src="{{url.archive}}" height:300px width:300px/></img></a>
     </div>
-
    <a class="btn btn-warning" href="../../delete/{{url.pk}}>Delete URL</a>
 </section>
 {% endblock %}
